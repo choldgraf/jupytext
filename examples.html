@@ -1,0 +1,268 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Example usage &mdash; Jupytext  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Fine tuning" href="advanced.html" />
+    <link rel="prev" title="Format specifications" href="formats.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Jupytext
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-server.html">Using Jupytext from the Jupyter Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-cli.html">Using Jupytext from the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Examples</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#writing-notebooks-as-plain-text">Writing notebooks as plain text</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#collaborating-on-jupyter-notebooks">Collaborating on Jupyter Notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#code-refactoring">Code refactoring</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#importing-jupyter-notebooks-as-modules">Importing Jupyter Notebooks as modules</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Fine tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html#extending-the-light-and-percent-formats-to-more-languages">Extending the <code class="docutils literal notranslate"><span class="pre">light</span></code> and <code class="docutils literal notranslate"><span class="pre">percent</span></code> formats to more languages</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Jupytext</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Example usage</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/examples.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="example-usage">
+<h1>Example usage<a class="headerlink" href="#example-usage" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="writing-notebooks-as-plain-text">
+<h2>Writing notebooks as plain text<a class="headerlink" href="#writing-notebooks-as-plain-text" title="Permalink to this headline">¶</a></h2>
+<p>You like to work with scripts? The good news is that plain scripts, which you can draft and test in your favorite IDE, open transparently as notebooks in Jupyter when using Jupytext. Run the notebook in Jupyter to generate the outputs, <a class="reference external" href="#paired-notebooks">associate</a> an <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> representation, save and share your research as either a plain script or as a traditional Jupyter notebook with outputs.</p>
+</div>
+<div class="section" id="collaborating-on-jupyter-notebooks">
+<h2>Collaborating on Jupyter Notebooks<a class="headerlink" href="#collaborating-on-jupyter-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>With Jupytext, collaborating on Jupyter notebooks with Git becomes as easy as collaborating on text files.</p>
+<p>The setup is straightforward:</p>
+<ul class="simple">
+<li><p>Open your favorite notebook in Jupyter notebook</p></li>
+<li><p><a class="reference external" href="#paired-notebooks">Associate</a> a <code class="docutils literal notranslate"><span class="pre">.py</span></code> representation (for instance) to that notebook</p></li>
+<li><p>Save the notebook, and put the Python script under Git control. Sharing the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file is possible, but not required.</p></li>
+</ul>
+<p>Collaborating then works as follows:</p>
+<ul class="simple">
+<li><p>Your collaborator pulls your script.</p></li>
+<li><p>The script opens as a notebook in Jupyter, with no outputs (in JupyterLab right-click the script and use the open-with context menu).</p></li>
+<li><p>They run the notebook and save it. Outputs are regenerated, and a local <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file is created.</p></li>
+<li><p>Note that, alternatively, the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file could have been regenerated with <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">--sync</span> <span class="pre">notebook.py</span></code>.</p></li>
+<li><p>They change the notebook, and push their updated script. The diff is nothing else than a standard diff on a Python script.</p></li>
+<li><p>You pull the changed script, and refresh your browser. Input cells are updated. The outputs from cells that were changed are removed. Your variables are untouched, so you have the option to run only the modified cells to get the new outputs.</p></li>
+</ul>
+</div>
+<div class="section" id="code-refactoring">
+<h2>Code refactoring<a class="headerlink" href="#code-refactoring" title="Permalink to this headline">¶</a></h2>
+<p>In the animation below we propose a quick demo of Jupytext. While the example remains simple, it shows how your favorite text editor or IDE can be used to edit your Jupyter notebooks. IDEs are more convenient than Jupyter for navigating through code, editing and executing cells or fractions of cells, and debugging.</p>
+<ul class="simple">
+<li><p>We start with a Jupyter notebook.</p></li>
+<li><p>The notebook includes a plot of the world population. The plot legend is not in order of decreasing population, we’ll fix this.</p></li>
+<li><p>We want the notebook to be saved as both a <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> and a <code class="docutils literal notranslate"><span class="pre">.py</span></code> file: we select <em>Pair Notebook with a light Script</em> in either the <a class="reference external" href="#jupytext-menu-in-jupyter-notebook">Jupytext menu</a> in Jupyter Notebook, or in the <a class="reference external" href="#jupytext-commands-in-jupyterlab">Jupytext commands</a> in JupyterLab. This has the effect of adding a <code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;:</span> <span class="pre">{&quot;formats&quot;:</span> <span class="pre">&quot;ipynb,py:light&quot;},</span></code> entry to the notebook metadata.</p></li>
+<li><p>The Python script can be opened with PyCharm:</p>
+<ul>
+<li><p>Navigating in the code and documentation is easier than in Jupyter.</p></li>
+<li><p>The console is convenient for quick tests. We don’t need to create cells for this.</p></li>
+<li><p>We find out that the columns of the data frame were not in the correct order. We update the corresponding cell, and get the correct plot.</p></li>
+</ul>
+</li>
+<li><p>The Jupyter notebook is refreshed in the browser. Modified inputs are loaded from the Python script. Outputs and variables are preserved. We finally rerun the code and get the correct plot.</p></li>
+</ul>
+<p><img alt="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/b8dd28f44678f8c91f262da2381276fc4d03b00a/JupyterPyCharm.gif" src="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/b8dd28f44678f8c91f262da2381276fc4d03b00a/JupyterPyCharm.gif" /></p>
+</div>
+<div class="section" id="importing-jupyter-notebooks-as-modules">
+<h2>Importing Jupyter Notebooks as modules<a class="headerlink" href="#importing-jupyter-notebooks-as-modules" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext allows to import code from other Jupyter notebooks in a very simple manner. Indeed, all you need to do is to pair the notebook that you wish to import with a script, and import the resulting script.</p>
+<p>If the notebook contains demos and plots that you don’t want to import, mark those cells as either</p>
+<ul class="simple">
+<li><p><em>active</em> only in the <code class="docutils literal notranslate"><span class="pre">ipynb</span></code> format, with the <code class="docutils literal notranslate"><span class="pre">{&quot;active&quot;:</span> <span class="pre">&quot;ipynb&quot;}</span></code> cell metadata, or with an <code class="docutils literal notranslate"><span class="pre">active-ipynb</span></code> tag (you may use the <a class="reference external" href="https://github.com/jupyterlab/jupyterlab-celltags">jupyterlab-celltags</a> extension for this).</p></li>
+<li><p><em>frozen</em>, using the <a class="reference external" href="https://jupyter-contrib-nbextensions.readthedocs.io/en/latest/nbextensions/freeze/readme.html">freeze extension</a> for Jupyter notebook.</p></li>
+</ul>
+<p>Inactive cells will be commented in the paired script, and consequently will not be executed when the script is imported.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="advanced.html" class="btn btn-neutral float-right" title="Fine tuning" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="formats.html" class="btn btn-neutral float-left" title="Format specifications" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Jupytext Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

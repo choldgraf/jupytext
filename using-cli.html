@@ -1,0 +1,301 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Jupytext with the command line &mdash; Jupytext  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Supported formats" href="formats.html" />
+    <link rel="prev" title="Using Jupytext from within Jupyter" href="using-server.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Jupytext
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-server.html">Using Jupytext from the Jupyter Server</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Jupytext from the Command Line</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#command-line-conversion">Command line conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupytext-as-a-git-pre-commit-hook">Jupytext as a Git pre-commit hook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#testing-the-round-trip-conversion">Testing the round-trip conversion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#reading-notebooks-in-python">Reading notebooks in Python</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Jupytext</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Jupytext with the command line</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/using-cli.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-jupytext-with-the-command-line">
+<h1>Using Jupytext with the command line<a class="headerlink" href="#using-jupytext-with-the-command-line" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="command-line-conversion">
+<h2>Command line conversion<a class="headerlink" href="#command-line-conversion" title="Permalink to this headline">¶</a></h2>
+<p>The package provides a <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> script for command line conversion between the various notebook extensions:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext --to py notebook.ipynb                 <span class="c1"># create a notebook.py file in the light format</span>
+jupytext --to py:percent notebook.ipynb         <span class="c1"># create a notebook.py file in the double percent format</span>
+jupytext --to py:percent --comment-magics <span class="nb">false</span> notebook.ipynb   <span class="c1"># create a notebook.py file in the double percent format, and do not comment magic commands</span>
+jupytext --to markdown notebook.ipynb           <span class="c1"># create a notebook.md file</span>
+jupytext --output script.py notebook.ipynb      <span class="c1"># create a script.py file</span>
+
+jupytext --to notebook notebook.py              <span class="c1"># overwrite notebook.ipynb (remove outputs)</span>
+jupytext --to notebook --update notebook.py     <span class="c1"># update notebook.ipynb (preserve outputs)</span>
+jupytext --to ipynb notebook1.md notebook2.py   <span class="c1"># overwrite notebook1.ipynb and notebook2.ipynb</span>
+
+jupytext --to md --test notebook.ipynb          <span class="c1"># Test round trip conversion</span>
+
+jupytext --to md --output - notebook.ipynb      <span class="c1"># display the markdown version on screen</span>
+jupytext --from ipynb --to py:percent           <span class="c1"># read ipynb from stdin and write double percent script on stdout</span>
+</pre></div>
+</div>
+<p>Jupytext has a <code class="docutils literal notranslate"><span class="pre">--sync</span></code> mode that updates all the paired representations of a notebook based on the file that was last modified. You may also find useful to <code class="docutils literal notranslate"><span class="pre">--pipe</span></code> the text representation of a notebook into tools like <code class="docutils literal notranslate"><span class="pre">black</span></code>:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupytext --sync --pipe black notebook.ipynb    <span class="c1"># read most recent version of notebook, reformat with black, save</span>
+</pre></div>
+</div>
+<p>The <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> command accepts many arguments. Use the <code class="docutils literal notranslate"><span class="pre">--set-formats</span></code> and the <code class="docutils literal notranslate"><span class="pre">--update-metadata</span></code> arguments to edit the pairing information or more generally the notebook metadata. Execute <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">--help</span></code> to access the documentation.</p>
+</div>
+<div class="section" id="jupytext-as-a-git-pre-commit-hook">
+<h2>Jupytext as a Git pre-commit hook<a class="headerlink" href="#jupytext-as-a-git-pre-commit-hook" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext is also available as a Git pre-commit hook. Use this if you want Jupytext to create and update the <code class="docutils literal notranslate"><span class="pre">.py</span></code> (or <code class="docutils literal notranslate"><span class="pre">.md</span></code>…) representation of the staged <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebooks. All you need is to create an executable <code class="docutils literal notranslate"><span class="pre">.git/hooks/pre-commit</span></code> file with the following content:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># For every ipynb file in the git index, add a Python representation</span>
+jupytext --from ipynb --to py:light --pre-commit
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
+<span class="c1"># For every ipynb file in the git index:</span>
+<span class="c1"># - apply black and flake8</span>
+<span class="c1"># - export the notebook to a Python script in folder &#39;python&#39;</span>
+<span class="c1"># - and add it to the git index</span>
+jupytext --from ipynb --pipe black --check flake8 --pre-commit
+jupytext --from ipynb --to python//py:light --pre-commit
+</pre></div>
+</div>
+<p>If you don’t want notebooks to be committed (and only commit the representations), you can ask the pre-commit hook to unstage notebooks after conversion by adding the following line:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git reset HEAD **/*.ipynb
+</pre></div>
+</div>
+<p>Note that these hooks do not update the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook when you pull. Make sure to either run <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> in the other direction, or to use our paired notebook and our contents manager for Jupyter. Also, Jupytext does not offer a merge driver. If a conflict occurs, solve it on the text representation and then update or recreate the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook. Or give a try to nbdime and its <a class="reference external" href="https://nbdime.readthedocs.io/en/stable/vcs.html#merge-driver">merge driver</a>.</p>
+</div>
+<div class="section" id="testing-the-round-trip-conversion">
+<h2>Testing the round-trip conversion<a class="headerlink" href="#testing-the-round-trip-conversion" title="Permalink to this headline">¶</a></h2>
+<p>Representing Jupyter notebooks as scripts requires a solid round trip conversion. You don’t want your notebooks (nor your scripts) to be modified because you are converting them to the other form. Our test suite includes a few hundred tests to ensure that round trip conversion is safe.</p>
+<p>You can easily test that the round trip conversion preserves your Jupyter notebooks and scripts. Run for instance:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># Test the ipynb -&gt; py:percent -&gt; ipynb round trip conversion</span>
+jupytext --test notebook.ipynb --to py:percent
+
+<span class="c1"># Test the ipynb -&gt; (py:percent + ipynb) -&gt; ipynb (à la paired notebook) conversion</span>
+jupytext --test --update notebook.ipynb --to py:percent
+</pre></div>
+</div>
+<p>Note that <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">--test</span></code> compares the resulting notebooks according to its expectations. If you wish to proceed to a strict comparison of the two notebooks, use <code class="docutils literal notranslate"><span class="pre">jupytext</span> <span class="pre">--test-strict</span></code>, and use the flag <code class="docutils literal notranslate"><span class="pre">-x</span></code> to report with more details on the first difference, if any.</p>
+<p>Please note that</p>
+<ul class="simple">
+<li><p>Scripts opened with Jupyter have a default <a class="reference external" href="#default-metadata-filtering">metadata filter</a> that prevents additional notebook or cell
+metadata to be added back to the script. Remove the filter if you want to store Jupytext’s settings, or the kernel information, in the text file.</p></li>
+<li><p>Cell metadata are available in the <code class="docutils literal notranslate"><span class="pre">light</span></code> and <code class="docutils literal notranslate"><span class="pre">percent</span></code> formats, as well as in the Markdown and R Markdown formats. R scripts in <code class="docutils literal notranslate"><span class="pre">spin</span></code> format support cell metadata for code cells only. Sphinx Gallery scripts in <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> format do not support cell metadata.</p></li>
+<li><p>By default, a few cell metadata are not included in the text representation of the notebook. And only the most standard notebook metadata are exported. Learn more on this in the sections for <a class="reference external" href="#-per-notebook-configuration">notebook specific</a> and <a class="reference external" href="#default-metadata-filtering">global settings</a> for metadata filtering.</p></li>
+</ul>
+</div>
+<div class="section" id="reading-notebooks-in-python">
+<h2>Reading notebooks in Python<a class="headerlink" href="#reading-notebooks-in-python" title="Permalink to this headline">¶</a></h2>
+<p>You can also manipulate notebooks in a Python shell or script using Jupytext’s main functions:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Read a notebook from a file. Format can be any of &#39;py&#39;, &#39;md&#39;, &#39;jl:percent&#39;, ...</span>
+<span class="n">readf</span><span class="p">(</span><span class="n">nb_file</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+
+<span class="c1"># Read a notebook from a string. Here, format should contain at least the file extension.</span>
+<span class="n">reads</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+
+<span class="c1"># Return the text representation for a notebook in the desired format.</span>
+<span class="n">writes</span><span class="p">(</span><span class="n">notebook</span><span class="p">,</span> <span class="n">fmt</span><span class="p">)</span>
+
+<span class="c1"># Write a notebook to a file in the desired format.</span>
+<span class="n">writef</span><span class="p">(</span><span class="n">notebook</span><span class="p">,</span> <span class="n">nb_file</span><span class="p">,</span> <span class="n">fmt</span><span class="o">=</span><span class="bp">None</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="formats.html" class="btn btn-neutral float-right" title="Supported formats" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="using-server.html" class="btn btn-neutral float-left" title="Using Jupytext from within Jupyter" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Jupytext Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

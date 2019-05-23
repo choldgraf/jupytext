@@ -1,0 +1,255 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Jupyter notebooks as Markdown documents, Julia, Python or R scripts &mdash; Jupytext  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="#" class="icon icon-home"> Jupytext
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-server.html">Using Jupytext from the Jupyter Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-cli.html">Using Jupytext from the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">Jupytext</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="#">Docs</a> &raquo;</li>
+        
+      <li>Jupyter notebooks as Markdown documents, Julia, Python or R scripts</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/index.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="jupyter-notebooks-as-markdown-documents-julia-python-or-r-scripts">
+<h1>Jupyter notebooks as Markdown documents, Julia, Python or R scripts<a class="headerlink" href="#jupyter-notebooks-as-markdown-documents-julia-python-or-r-scripts" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://travis-ci.com/mwouts/jupytext"><img alt="https://travis-ci.com/mwouts/jupytext.svg?branch=master" src="https://travis-ci.com/mwouts/jupytext.svg?branch=master" /></a>
+<a class="reference external" href="https://codecov.io/github/mwouts/jupytext?branch=master"><img alt="https://codecov.io/github/mwouts/jupytext/coverage.svg?branch=master" src="https://codecov.io/github/mwouts/jupytext/coverage.svg?branch=master" /></a>
+<a class="reference external" href="https://lgtm.com/projects/g/mwouts/jupytext/context:python"><img alt="https://img.shields.io/badge/lgtm-A+-brightgreen.svg" src="https://img.shields.io/badge/lgtm-A+-brightgreen.svg" /></a></p>
+<p>Have you always wished Jupyter notebooks were plain text documents? Wished you could edit them in your favorite IDE? And get clear and meaningful diffs when doing version control? Then… Jupytext may well be the tool you’re looking for!</p>
+<p>Jupytext can save Jupyter notebooks as</p>
+<ul class="simple">
+<li><p>Markdown and R Markdown documents,</p></li>
+<li><p>Julia, Python, R, Bash, Scheme, Clojure, Matlab, Octave, C++ and q/kdb+ scripts.</p></li>
+</ul>
+<p>The plain text formatting of the notebook cell divisions in scripts is configurable. Popular choices include the <code class="docutils literal notranslate"><span class="pre">percent</span></code> format [<code class="docutils literal notranslate"><span class="pre">#</span> <span class="pre">%%</span></code>] used by Spyder, VSCode, and others, and the <code class="docutils literal notranslate"><span class="pre">light</span></code> format which was developed to support this project. <code class="docutils literal notranslate"><span class="pre">light</span></code> uses as few cell markers as possible and is particularly suited for importing a pre-existing python script as a notebook with cell divisions automatically inferred from paragraph breaks in the source code.</p>
+<div class="section" id="site-contents">
+<h2>Site Contents<a class="headerlink" href="#site-contents" title="Permalink to this headline">¶</a></h2>
+<div class="toctree-wrapper compound">
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-server.html">Using Jupytext from the Jupyter Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-cli.html">Using Jupytext from the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+</ul>
+</div>
+</div>
+<div class="section" id="quickstart">
+<h2>Quickstart<a class="headerlink" href="#quickstart" title="Permalink to this headline">¶</a></h2>
+<p>There are multiple ways to use <code class="docutils literal notranslate"><span class="pre">jupytext</span></code>:</p>
+<ul class="simple">
+<li><p><strong>Directly from Jupyter Notebook or JupyterLab.</strong> Jupytext provides a <em>contents manager</em> that allows Jupyter to save your notebook to your favorite format (<code class="docutils literal notranslate"><span class="pre">.py</span></code>, <code class="docutils literal notranslate"><span class="pre">.R</span></code>, <code class="docutils literal notranslate"><span class="pre">.jl</span></code>, <code class="docutils literal notranslate"><span class="pre">.md</span></code>, <code class="docutils literal notranslate"><span class="pre">.Rmd</span></code>…) in addition to (or in place of) the traditional <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file. The text representation can be edited in your favorite editor. When you’re done, refresh the notebook in Jupyter: inputs cells are loaded from the text file, while output cells are reloaded from the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file if present. Refreshing preserves kernel variables, so you can resume your work in the notebook and run the modified cells without having to rerun the notebook in full.</p></li>
+<li><p><strong>On the <a class="reference external" href="using-cli.html">command line</a></strong>. <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> converts Jupyter notebooks to their text representation, and back. The command line tool can act on notebooks in many ways. It can synchronize multiple representations of a notebook, pipe a notebook into a reformatting tool like <code class="docutils literal notranslate"><span class="pre">black</span></code>, etc… It can also work as a <a class="reference external" href="#jupytext-as-a-git-pre-commit-hook">pre-commit hook</a> if you wish to automatically update the text representation when you commit the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file.</p></li>
+<li><p><strong>in Vim</strong>: edit your Jupyter notebooks, represented as a Markdown document, or a Python script, with <a class="reference external" href="https://github.com/goerz/jupytext.vim">jupytext.vim</a>.</p></li>
+</ul>
+</div>
+<div class="section" id="demo-time">
+<h2>Demo time<a class="headerlink" href="#demo-time" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://towardsdatascience.com/introducing-jupytext-9234fdff6c57"><img alt="https://img.shields.io/badge/TDS-Introducing%20Jupytext-blue.svg" src="https://img.shields.io/badge/TDS-Introducing%20Jupytext-blue.svg" /></a>
+<a class="reference external" href="https://www.youtube.com/watch?v=y-VEZenk824"><img alt="https://img.shields.io/badge/YouTube-PyParis-red.svg" src="https://img.shields.io/badge/YouTube-PyParis-red.svg" /></a>
+<a class="reference external" href="https://mybinder.org/v2/gh/mwouts/jupytext/master?filepath=demo"><img alt="https://img.shields.io/badge/Binder-Try%20it%21-blue.svg" src="https://img.shields.io/badge/Binder-Try%20it%21-blue.svg" /></a></p>
+<p>Looking for a demo?</p>
+<ul class="simple">
+<li><p>Read the original <a class="reference external" href="https://towardsdatascience.com/introducing-jupytext-9234fdff6c57">announcement</a> in Towards Data Science,</p></li>
+<li><p>Watch the <a class="reference external" href="https://github.com/mwouts/jupytext_pyparis_2018/blob/master/README">PyParis talk</a>,</p></li>
+<li><p>or, try Jupytext online with <a class="reference external" href="https://mybinder.org/v2/gh/mwouts/jupytext/master?filepath=demo">binder</a>!</p></li>
+</ul>
+</div>
+<div class="section" id="want-to-contribute">
+<h2>Want to contribute?<a class="headerlink" href="#want-to-contribute" title="Permalink to this headline">¶</a></h2>
+<p>Contributions are welcome. Please let us know how you use <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> and how we could improve it. You think the documentation could be improved? Go ahead! And stay tuned for more demos on <a class="reference external" href="https://medium.com/&#64;marc.wouts">medium</a> and <a class="reference external" href="https://twitter.com/marcwouts">twitter</a>!</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="install.html" class="btn btn-neutral float-right" title="Installation" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Jupytext Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

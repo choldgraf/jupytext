@@ -1,0 +1,263 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; Jupytext  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Jupytext from within Jupyter" href="using-server.html" />
+    <link rel="prev" title="Jupyter notebooks as Markdown documents, Julia, Python or R scripts" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Jupytext
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#jupytext-s-contents-manager">Jupytext’s contents manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupytext-menu-in-jupyter-notebook">Jupytext menu in Jupyter Notebook</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#jupytext-commands-in-jupyterlab">Jupytext commands in JupyterLab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using-server.html">Using Jupytext from the Jupyter Server</a></li>
+<li class="toctree-l1"><a class="reference internal" href="using-cli.html">Using Jupytext from the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Fine tuning</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html#extending-the-light-and-percent-formats-to-more-languages">Extending the <code class="docutils literal notranslate"><span class="pre">light</span></code> and <code class="docutils literal notranslate"><span class="pre">percent</span></code> formats to more languages</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Jupytext</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/install.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Permalink to this headline">¶</a></h1>
+<p><a class="reference external" href="https://anaconda.org/conda-forge/jupytext"><img alt="https://img.shields.io/conda/vn/conda-forge/jupytext.svg" src="https://img.shields.io/conda/vn/conda-forge/jupytext.svg" />Conda Version</a>
+<a class="reference external" href="https://pypi.python.org/pypi/jupytext"><img alt="https://img.shields.io/pypi/v/jupytext.svg" src="https://img.shields.io/pypi/v/jupytext.svg" />Pypi</a>
+<a class="reference external" href="https://pypi.python.org/pypi/jupytext"><img alt="https://img.shields.io/pypi/pyversions/jupytext.svg" src="https://img.shields.io/pypi/pyversions/jupytext.svg" />pyversions</a></p>
+<p>Jupytext is available on pypi and on conda-forge. Run either of</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip install jupytext --upgrade
+</pre></div>
+</div>
+<p>or</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conda install -c conda-forge jupytext
+</pre></div>
+</div>
+<p>If you want to use Jupytext within Jupyter Notebook or JupyterLab, make sure you install Jupytext in the Python environment where the Jupyter server runs. If that environment is read-only, for instance if your server is started using JupyterHub, install Jupytext in user mode with:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">/</span><span class="n">path_to_your_jupyter_environment</span><span class="o">/</span><span class="n">python</span> <span class="o">-</span><span class="n">m</span> <span class="n">pip</span> <span class="n">install</span> <span class="n">jupytext</span> <span class="o">--</span><span class="n">upgrade</span> <span class="o">--</span><span class="n">user</span>
+</pre></div>
+</div>
+<div class="section" id="jupytext-s-contents-manager">
+<h2>Jupytext’s contents manager<a class="headerlink" href="#jupytext-s-contents-manager" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext includes a contents manager for Jupyter that allows Jupyter to open and save notebooks as text files. When Jupytext’s content manager is active in Jupyter, scripts and Markdown documents have a notebook icon.</p>
+<p>If you don’t have the notebook icon on text documents after a fresh restart of your Jupyter server, install the contents manager manually. Append</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">contents_manager_class</span> <span class="o">=</span> <span class="s2">&quot;jupytext.TextFileContentsManager&quot;</span>
+</pre></div>
+</div>
+<p>to your <code class="docutils literal notranslate"><span class="pre">.jupyter/jupyter_notebook_config.py</span></code> file (generate a Jupyter config, if you don’t have one yet, with <code class="docutils literal notranslate"><span class="pre">jupyter</span> <span class="pre">notebook</span> <span class="pre">--generate-config</span></code>). Our contents manager accepts a few options: default formats, default metadata filter, etc — read more on this <a class="reference external" href="#global-configuration">below</a>. Then, restart Jupyter Notebook or JupyterLab, either from the JupyterHub interface or from the command line with</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>jupyter notebook <span class="c1"># or lab</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jupytext-menu-in-jupyter-notebook">
+<h2>Jupytext menu in Jupyter Notebook<a class="headerlink" href="#jupytext-menu-in-jupyter-notebook" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext includes an extensions for Jupyter Notebook that adds a Jupytext section in the File menu.</p>
+<p><img alt="https://raw.githubusercontent.com/mwouts/jupytext_nbextension/master/jupytext_menu.png" src="https://raw.githubusercontent.com/mwouts/jupytext_nbextension/master/jupytext_menu.png" />Jupyter notebook extension</p>
+<p>If the extension was not automatically installed, install and activate it with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">install</span> <span class="o">--</span><span class="n">py</span> <span class="n">jupytext</span> <span class="p">[</span><span class="o">--</span><span class="n">user</span><span class="p">]</span>
+<span class="n">jupyter</span> <span class="n">nbextension</span> <span class="n">enable</span> <span class="o">--</span><span class="n">py</span> <span class="n">jupytext</span> <span class="p">[</span><span class="o">--</span><span class="n">user</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="jupytext-commands-in-jupyterlab">
+<h2>Jupytext commands in JupyterLab<a class="headerlink" href="#jupytext-commands-in-jupyterlab" title="Permalink to this headline">¶</a></h2>
+<p>In JupyterLab, Jupytext adds a set of commands to the command palette:</p>
+<p><img alt="https://raw.githubusercontent.com/mwouts/jupyterlab-jupytext/master/jupytext_commands.png" src="https://raw.githubusercontent.com/mwouts/jupyterlab-jupytext/master/jupytext_commands.png" />JupyterLab extension</p>
+<p>If you don’t see these commands, install the extension manually with</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupyter</span> <span class="n">labextension</span> <span class="n">install</span> <span class="n">jupyterlab</span><span class="o">-</span><span class="n">jupytext</span>
+</pre></div>
+</div>
+<p>(the above requires <code class="docutils literal notranslate"><span class="pre">npm</span></code>, run <code class="docutils literal notranslate"><span class="pre">conda</span> <span class="pre">install</span> <span class="pre">nodejs</span></code> first if you don’t have <code class="docutils literal notranslate"><span class="pre">npm</span></code>).</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="using-server.html" class="btn btn-neutral float-right" title="Using Jupytext from within Jupyter" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Jupyter notebooks as Markdown documents, Julia, Python or R scripts" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Jupytext Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

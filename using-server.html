@@ -1,0 +1,309 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Using Jupytext from within Jupyter &mdash; Jupytext  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.0/clipboard.min.js"></script>
+        <script type="text/javascript" src="_static/copybutton.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+  <link rel="stylesheet" href="_static/copybutton.css" type="text/css" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Using Jupytext with the command line" href="using-cli.html" />
+    <link rel="prev" title="Installation" href="install.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> Jupytext
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="install.html">Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Using Jupytext from the Jupyter Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#paired-notebooks">Paired notebooks</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#per-notebook-configuration">Per-notebook configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#global-configuration">Global configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#metadata-filtering">Metadata filtering</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#can-i-edit-a-notebook-simultaneously-in-jupyter-and-in-a-text-editor">Can I edit a notebook simultaneously in Jupyter and in a text editor?</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-open-scripts-with-either-the-text-or-notebook-view-in-jupyter">How to open scripts with either the text or notebook view in Jupyter?</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="using-cli.html">Using Jupytext from the Command Line</a></li>
+<li class="toctree-l1"><a class="reference internal" href="formats.html">Formats supported in Jupytext</a></li>
+<li class="toctree-l1"><a class="reference internal" href="examples.html">Examples</a></li>
+<li class="toctree-l1"><a class="reference internal" href="advanced.html">Advanced Usage</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">Jupytext</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Using Jupytext from within Jupyter</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="_sources/using-server.md.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="using-jupytext-from-within-jupyter">
+<h1>Using Jupytext from within Jupyter<a class="headerlink" href="#using-jupytext-from-within-jupyter" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="paired-notebooks">
+<h2>Paired notebooks<a class="headerlink" href="#paired-notebooks" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext can write a given notebook to multiple files. In addition to the original notebook file, Jupytext can save the input cells to a text file — either a script or a Markdown document. Put the text file under version control for a clear commit history. Or refactor the paired script, and reimport the updated input cells by simply refreshing the notebook in Jupyter.</p>
+</div>
+<div class="section" id="per-notebook-configuration">
+<h2>Per-notebook configuration<a class="headerlink" href="#per-notebook-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Select the pairing for a given notebook using either the <a class="reference external" href="#jupytext-menu-in-jupyter-notebook">Jupytext menu</a> in Jupyter Notebook, or the <a class="reference external" href="#jupytext-commands-in-jupyterlab">Jupytext commands</a> in JupyterLab.</p>
+<p>These command simply add a <code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;:</span> <span class="pre">{&quot;formats&quot;:</span> <span class="pre">&quot;ipynb,md&quot;}</span></code>-like entry in the notebook metadata. You could also set that metadata yourself with <em>Edit/Edit Notebook Metadata</em> in Jupyter Notebook. In JupyterLab, use <a class="reference external" href="https://github.com/yuvipanda/jupyterlab-nbmetadata">this extension</a>.</p>
+<p>The pairing information for one or multiple notebooks can be set on the command line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">jupytext</span> <span class="o">--</span><span class="nb">set</span><span class="o">-</span><span class="n">formats</span> <span class="n">ipynb</span><span class="p">,</span><span class="n">py</span> <span class="p">[</span><span class="o">--</span><span class="n">sync</span><span class="p">]</span> <span class="n">notebook</span><span class="o">.</span><span class="n">ipynb</span>
+</pre></div>
+</div>
+<p>You can pair a notebook to as many text representations as you want (see our <em>World population</em> notebook in the demo folder). Format specifications are of the form</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[[</span><span class="n">path</span><span class="o">/</span><span class="p">][</span><span class="n">prefix</span><span class="p">]</span><span class="o">/</span><span class="p">][</span><span class="n">suffix</span><span class="o">.</span><span class="p">]</span><span class="n">ext</span><span class="p">[:</span><span class="n">format_name</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>where</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">ext</span></code> is one of <code class="docutils literal notranslate"><span class="pre">ipynb</span></code>, <code class="docutils literal notranslate"><span class="pre">md</span></code>, <code class="docutils literal notranslate"><span class="pre">Rmd</span></code>, <code class="docutils literal notranslate"><span class="pre">jl</span></code>, <code class="docutils literal notranslate"><span class="pre">py</span></code>, <code class="docutils literal notranslate"><span class="pre">R</span></code>, <code class="docutils literal notranslate"><span class="pre">sh</span></code>, <code class="docutils literal notranslate"><span class="pre">cpp</span></code>, <code class="docutils literal notranslate"><span class="pre">q</span></code>. Use the <code class="docutils literal notranslate"><span class="pre">auto</span></code> extension to have the script extension chosen according to the Jupyter kernel.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">format_name</span></code> (optional) is either <code class="docutils literal notranslate"><span class="pre">light</span></code> (default for scripts), <code class="docutils literal notranslate"><span class="pre">bare</span></code>, <code class="docutils literal notranslate"><span class="pre">percent</span></code>, <code class="docutils literal notranslate"><span class="pre">hydrogen</span></code>, <code class="docutils literal notranslate"><span class="pre">sphinx</span></code> (Python only), <code class="docutils literal notranslate"><span class="pre">spin</span></code> (R only) — see below for the <a class="reference external" href="#Format-specifications">format specifications</a>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">path</span></code>, <code class="docutils literal notranslate"><span class="pre">prefix</span></code> and <code class="docutils literal notranslate"><span class="pre">suffix</span></code> allow to save the text representation to files with different names, or in a different folder.</p></li>
+</ul>
+<p>If you want to pair a notebook to a python script in a subfolder named <code class="docutils literal notranslate"><span class="pre">scripts</span></code>, set the formats metadata to <code class="docutils literal notranslate"><span class="pre">ipynb,scripts//py</span></code>. If the notebook is in a <code class="docutils literal notranslate"><span class="pre">notebooks</span></code> folder and you want the text representation to be in a <code class="docutils literal notranslate"><span class="pre">scripts</span></code> folder at the same level, set the Jupytext formats to <code class="docutils literal notranslate"><span class="pre">notebooks//ipynb,scripts//py</span></code>.</p>
+<p>Jupytext accepts a few additional options. These options should be added to the <code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;</span></code> section in the metadata — use either the metadata editor or the <code class="docutils literal notranslate"><span class="pre">--opt/--format-options</span></code> argument on the command line.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">comment_magics</span></code>: By default, Jupyter magics are commented when notebooks are exported to any other format than markdown. If you prefer otherwise, use this boolean option, or is global counterpart (see below).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">notebook_metadata_filter</span></code>: By default, Jupytext only exports the <code class="docutils literal notranslate"><span class="pre">kernelspec</span></code> and <code class="docutils literal notranslate"><span class="pre">jupytext</span></code> metadata to the text files. Set <code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;:</span> <span class="pre">{&quot;notebook_metadata_filter&quot;:</span> <span class="pre">&quot;-all&quot;}</span></code> if you want that the script has no notebook metadata at all. The value for <code class="docutils literal notranslate"><span class="pre">notebook_metadata_filter</span></code> is a comma separated list of additional/excluded (negated) entries, with <code class="docutils literal notranslate"><span class="pre">all</span></code> a keyword that allows to exclude all entries.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">cell_metadata_filter</span></code>: By default, cell metadata <code class="docutils literal notranslate"><span class="pre">autoscroll</span></code>, <code class="docutils literal notranslate"><span class="pre">collapsed</span></code>, <code class="docutils literal notranslate"><span class="pre">scrolled</span></code>, <code class="docutils literal notranslate"><span class="pre">trusted</span></code> and <code class="docutils literal notranslate"><span class="pre">ExecuteTime</span></code> are not included in the text representation. Add or exclude more cell metadata with this option.</p></li>
+</ul>
+</div>
+<div class="section" id="global-configuration">
+<h2>Global configuration<a class="headerlink" href="#global-configuration" title="Permalink to this headline">¶</a></h2>
+<p>Jupytext’s contents manager also accepts global options. These options have to be set on Jupytext’s contents manager, so please first include the following line in your <code class="docutils literal notranslate"><span class="pre">.jupyter/jupyter_notebook_config.py</span></code> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">NotebookApp</span><span class="o">.</span><span class="n">contents_manager_class</span> <span class="o">=</span> <span class="s2">&quot;jupytext.TextFileContentsManager&quot;</span>
+</pre></div>
+</div>
+<p>We start with the default format pairing. Say you want to always associate every <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook with a <code class="docutils literal notranslate"><span class="pre">.md</span></code> file  (and reciprocally). This is simply done by adding the following to your Jupyter configuration file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Always pair ipynb notebooks to md files</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">default_jupytext_formats</span> <span class="o">=</span> <span class="s2">&quot;ipynb,md&quot;</span>
+</pre></div>
+</div>
+<p>(and similarly for the other formats).</p>
+<p>In case the <a class="reference external" href="#the-percent-format"><code class="docutils literal notranslate"><span class="pre">percent</span></code></a> format is your favorite, add the following to your <code class="docutils literal notranslate"><span class="pre">.jupyter/jupyter_notebook_config.py</span></code> file:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># Use the percent format when saving as py</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">preferred_jupytext_formats_save</span> <span class="o">=</span> <span class="s2">&quot;py:percent&quot;</span>
+</pre></div>
+</div>
+<p>and then, Jupytext will understand <code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;:</span> <span class="pre">{&quot;formats&quot;:</span> <span class="pre">&quot;ipynb,py&quot;}</span></code> as an instruction to create the paired Python script in the <code class="docutils literal notranslate"><span class="pre">percent</span></code> format.</p>
+<p>To disable global pairing for an individual notebook, set formats to a single format, e.g.:
+<code class="docutils literal notranslate"><span class="pre">&quot;jupytext&quot;:</span> <span class="pre">{&quot;formats&quot;:</span> <span class="pre">&quot;ipynb&quot;}</span></code></p>
+</div>
+<div class="section" id="metadata-filtering">
+<h2>Metadata filtering<a class="headerlink" href="#metadata-filtering" title="Permalink to this headline">¶</a></h2>
+<p>You can specify which metadata to include or exclude in the text files created by Jupytext by setting <code class="docutils literal notranslate"><span class="pre">c.ContentsManager.default_notebook_metadata_filter</span></code> (notebook metadata) and <code class="docutils literal notranslate"><span class="pre">c.ContentsManager.default_cell_metadata_filter</span></code> (cell metadata). They accept a string of comma separated keywords. A minus sign <code class="docutils literal notranslate"><span class="pre">-</span></code> in font of a keyword means exclusion.</p>
+<p>Suppose you want to keep all the notebook metadata but <code class="docutils literal notranslate"><span class="pre">widgets</span></code> and <code class="docutils literal notranslate"><span class="pre">varInspector</span></code> in the YAML header. For cell metadata, you want to allow <code class="docutils literal notranslate"><span class="pre">ExecuteTime</span></code> and <code class="docutils literal notranslate"><span class="pre">autoscroll</span></code>, but not <code class="docutils literal notranslate"><span class="pre">hide_output</span></code>. You can set</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">default_notebook_metadata_filter</span> <span class="o">=</span> <span class="s2">&quot;all,-widgets,-varInspector&quot;</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">default_cell_metadata_filter</span> <span class="o">=</span> <span class="s2">&quot;ExecuteTime,autoscroll,-hide_output&quot;</span>
+</pre></div>
+</div>
+<p>If you want that the text files created by Jupytext have no metadata, you may use the global metadata filters below. Please note that with this setting, the metadata is only preserved in the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">default_notebook_metadata_filter</span> <span class="o">=</span> <span class="s2">&quot;-all&quot;</span>
+<span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">default_cell_metadata_filter</span> <span class="o">=</span> <span class="s2">&quot;-all&quot;</span>
+</pre></div>
+</div>
+<p>NB: All these global options (and more) are documented <a class="reference external" href="https://github.com/mwouts/jupytext/blob/master/jupytext/contentsmanager.py">here</a>.</p>
+</div>
+<div class="section" id="can-i-edit-a-notebook-simultaneously-in-jupyter-and-in-a-text-editor">
+<h2>Can I edit a notebook simultaneously in Jupyter and in a text editor?<a class="headerlink" href="#can-i-edit-a-notebook-simultaneously-in-jupyter-and-in-a-text-editor" title="Permalink to this headline">¶</a></h2>
+<p>When saving a paired notebook using Jupytext’s contents manager, Jupyter updates both the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> and its text representation. The text representation can be edited outside of Jupyter. When the notebook is refreshed in Jupyter, the input cells are read from the text file, and the output cells from the <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> file.</p>
+<p>It is possible (and convenient) to leave the notebook open in Jupyter while you edit its text representation. However, you don’t want that the two editors save the notebook simultaneously. To avoid this:</p>
+<ul class="simple">
+<li><p>deactivate Jupyter’s autosave, by toggling the <code class="docutils literal notranslate"><span class="pre">&quot;Autosave</span> <span class="pre">notebook&quot;</span></code> menu entry (or run <code class="docutils literal notranslate"><span class="pre">%autosave</span> <span class="pre">0</span></code> in a cell of the notebook)</p></li>
+<li><p>and refresh the notebook when you switch back from the editor to Jupyter.</p></li>
+</ul>
+<p>In case you forgot to refresh, and saved the Jupyter notebook while the text representation had changed, no worries: Jupyter will ask you which version you want to keep:
+<img alt="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/fcbcd3c3fc1ec4a74669381b53753f9f783e10da/notebook_changed.png" src="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/fcbcd3c3fc1ec4a74669381b53753f9f783e10da/notebook_changed.png" />Notebook changed</p>
+<p>When that occurs, please choose the version in which you made the latest changes. And give a second look to our advice to deactivate the autosaving of notebooks in Jupyter.</p>
+</div>
+<div class="section" id="how-to-open-scripts-with-either-the-text-or-notebook-view-in-jupyter">
+<h2>How to open scripts with either the text or notebook view in Jupyter?<a class="headerlink" href="#how-to-open-scripts-with-either-the-text-or-notebook-view-in-jupyter" title="Permalink to this headline">¶</a></h2>
+<p>With Jupytext’s contents manager for Jupyter, scripts and Markdown documents gain a notebook icon. If you don’t see the notebook icon, double check the <a class="reference external" href="https://github.com/mwouts/jupytext/blob/master/README.md#jupytexts-contents-manager">contents manager configuration</a>.</p>
+<p>By default, Jupyter Notebook open scripts and Markdown documents as notebooks. If you want to open them with the text editor, select the document and click on <em>edit</em>:</p>
+<p><img alt="https://user-images.githubusercontent.com/29915202/53228364-42265400-3681-11e9-812d-46168c6e398c.png" src="https://user-images.githubusercontent.com/29915202/53228364-42265400-3681-11e9-812d-46168c6e398c.png" />Open as text</p>
+<p>In JupyterLab this is slightly different. Scripts and Markdown document also have a notebook icon. But they open as text by default. Open them as notebooks with the  <em>Open With -&gt; Notebook</em> context menu (available in JupyterLab 0.35 and above):</p>
+<p><img alt="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/403b53ac5097446a15ea664579ba44cd1badcc57/ContextMenuLab.png" src="https://gist.githubusercontent.com/mwouts/13de42d8bb514e4acf6481c580feffd0/raw/403b53ac5097446a15ea664579ba44cd1badcc57/ContextMenuLab.png" /></p>
+<p>If do not want to classify scripts or Markdown documents as notebooks, please use the <code class="docutils literal notranslate"><span class="pre">notebook_extension</span></code> option. For instance, if you want to get the notebook icon only for <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> and <code class="docutils literal notranslate"><span class="pre">.Rmd</span></code> files, set</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">c</span><span class="o">.</span><span class="n">ContentsManager</span><span class="o">.</span><span class="n">notebook_extensions</span> <span class="o">=</span> <span class="s2">&quot;ipynb,Rmd&quot;</span>
+</pre></div>
+</div>
+<p>Please note that, with the above setting, Jupyter will not let you open scripts as notebooks. If you still want to do so, use Jupytext command line (see below) to first convert or pair the script to an <code class="docutils literal notranslate"><span class="pre">.ipynb</span></code> notebook.</p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="using-cli.html" class="btn btn-neutral float-right" title="Using Jupytext with the command line" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="install.html" class="btn btn-neutral float-left" title="Installation" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2017, The Jupytext Team
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
